@@ -1,0 +1,42 @@
+{
+  "@@locale": "en",
+  "appTitle": "GrowOpsGo",
+  "@appTitle": {
+    "description": "Application title shown in the app bar and launcher"
+  },
+  "loginTitle": "Sign in to manage your batches",
+  "@loginTitle": {
+    "description": "Primary heading on the login screen"
+  },
+  "loginAutofillDemo": "Autofill demo credentials",
+  "@loginAutofillDemo": {
+    "description": "Button label to fill demo login credentials"
+  },
+  "authLoginTab": "Log in",
+  "authSignupTab": "Sign up",
+  "authEmailLabel": "Email",
+  "authPasswordLabel": "Password",
+  "authForgotPassword": "Forgot password?",
+  "authOrDivider": "OR",
+  "authContinueWithGoogle": "Continue with Google",
+  "authSignupTitle": "Create account",
+  "authFullNameHint": "Enter display name",
+  "authEmailHint": "you@example.com",
+  "authPasswordHint": "Enter password",
+  "authResetTitle": "Reset password",
+  "authResetDescription": "We'll send a reset link to your email.",
+  "authSendResetLink": "Send reset link",
+  "authResetLinkSent": "Reset link sent (demo)",
+  "syncedOnline": "Synced",
+  "syncedOffline": "Offline",
+  "navHome": "Home",
+  "navBatches": "Batches",
+  "navTasks": "Tasks",
+  "navStock": "Stock",
+  "navMore": "More",
+  "quickActionsTitle": "Quick actions",
+  "errorUnknown": "Something went wrong. Please try again.",
+  "errorNetwork": "Unable to connect. Check your network and try again.",
+  "errorUnauthorized": "Your session has expired. Please sign in again.",
+  "errorValidation": "Please check your input and try again."
+}

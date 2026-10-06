@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "726480725003",
+    "project_id": "growopsgo",
+    "storage_bucket": "growopsgo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726480725003:android:08ecba3a41af92877e530e",
+        "android_client_info": {
+          "package_name": "com.growopsgo.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726480725003-htr1le4utnkc3rd5jm50biu7rh89ec08.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.growopsgo.app",
+            "certificate_hash": "af243271d16601590914e8b7eb3e1871f8e27eac"
+          }
+        },
+        {
+          "client_id": "726480725003-76pdngcahguienfbjtf8fgf6hrneavhl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHtN-k5MYFzRuDAuZdJd-AIx0-URsS44A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726480725003-76pdngcahguienfbjtf8fgf6hrneavhl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "726480725003-lk3u9him99fb3qesndtf9lr72fb778qj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.growopsgo.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

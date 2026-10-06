@@ -1,0 +1,16 @@
+GrowOpsGo — Android SHA keys for Firebase Console
+Package: com.growopsgo.app
+Keystore: debug (default Android debug keystore)
+
+SHA-1:
+AF:24:32:71:D1:66:01:59:09:14:E8:B7:EB:3E:18:71:F8:E2:7E:AC
+
+SHA-256:
+54:AE:8A:1F:5B:51:D9:E8:68:71:92:64:0A:4E:CB:B3:B7:CC:87:C6:A7:48:BD:03:6B:B2:F5:49:15:CB:D8:C3
+
+Firebase steps:
+1. Firebase Console → Project settings → Your apps → Android (com.growopsgo.app)
+2. Add fingerprint → paste SHA-1 and SHA-256
+3. Authentication → Sign-in method → enable Google
+4. Re-download google-services.json and GoogleService-Info.plist into the project
+5. From GoogleService-Info.plist copy REVERSED_CLIENT_ID into ios/Runner/Info.plist CFBundleURLSchemes
