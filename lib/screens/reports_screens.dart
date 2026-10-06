@@ -187,27 +187,99 @@ class _MetricCard extends StatelessWidget {
     required this.label,
     required this.value,
     this.sub,
+    this.reserveSub = false,
   });
 
   final String label;
   final String value;
   final String? sub;
 
+  /// Keeps a subtitle line so sibling cards stay the same height.
+  final bool reserveSub;
+
   @override
   Widget build(BuildContext context) {
+    final showSub = sub != null || reserveSub;
     return GoCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label.toUpperCase(), style: AppTextStyles.section()),
-          const SizedBox(height: 6),
-          Text(value, style: AppTextStyles.heading()),
-          if (sub != null) ...[
+          Text(
+            label.toUpperCase(),
+            maxLines: 1,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.section(color: AppColors.mutedOf(context)),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            value,
+            maxLines: 1,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.heading(color: AppColors.inkOf(context)),
+          ),
+          if (showSub) ...[
             const SizedBox(height: 2),
-            Text(sub!, style: AppTextStyles.bodySmall()),
+            SizedBox(
+              height: 18,
+              child: sub == null
+                  ? null
+                  : Text(
+                      sub!,
+                      maxLines: 1,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.bodySmall(
+                        color: AppColors.mutedOf(context),
+                      ),
+                    ),
+            ),
           ],
         ],
       ),
+    );
+  }
+}
+
+/// Equal-width metric cards. Two columns on phones so labels stay intact,
+/// four columns once each card is wide enough.
+class _EqualMetricGrid extends StatelessWidget {
+  const _EqualMetricGrid({required this.children});
+
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final columns = constraints.maxWidth >= 600 ? 4 : 2;
+        const gap = 10.0;
+        final rowCount = (children.length / columns).ceil();
+
+        return Column(
+          children: [
+            for (var row = 0; row < rowCount; row++) ...[
+              if (row > 0) const SizedBox(height: gap),
+              IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    for (var col = 0; col < columns; col++) ...[
+                      if (col > 0) const SizedBox(width: gap),
+                      Expanded(
+                        child: row * columns + col < children.length
+                            ? children[row * columns + col]
+                            : const SizedBox.shrink(),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ],
+        );
+      },
     );
   }
 }
@@ -702,25 +774,29 @@ class _ActiveBatchesReportScreenState extends State<ActiveBatchesReportScreen> {
           ),
         ),
         const SizedBox(height: 14),
-        Row(
+        _EqualMetricGrid(
           children: [
-            Expanded(
-              child: _MetricCard(label: 'Active', value: '${list.length}'),
+            _MetricCard(
+              label: 'Active',
+              value: '${list.length}',
+              reserveSub: true,
             ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: _MetricCard(
-                label: 'Plants',
-                value: '$plants',
-                sub: 'in view',
-              ),
+            _MetricCard(
+              label: 'Plants',
+              value: '$plants',
+              sub: 'in view',
+              reserveSub: true,
             ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: _MetricCard(label: 'In flower', value: '$inFlower'),
+            _MetricCard(
+              label: 'In flower',
+              value: '$inFlower',
+              reserveSub: true,
             ),
-            const SizedBox(width: 8),
-            Expanded(child: _MetricCard(label: 'Oldest', value: oldest)),
+            _MetricCard(
+              label: 'Oldest',
+              value: oldest,
+              reserveSub: true,
+            ),
           ],
         ),
         const SizedBox(height: 14),

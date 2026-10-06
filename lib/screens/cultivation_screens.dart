@@ -84,11 +84,19 @@ class GeneticsScreen extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: 6),
         child: ChoiceChip(
-          avatar: Icon(icon, size: 16, color: selected ? Colors.white : GoColors.forest),
+          showCheckmark: false,
+          avatar: Icon(
+            icon,
+            size: 16,
+            color: selected ? Colors.white : GoColors.forest,
+          ),
           label: Text(label),
           selected: selected,
           selectedColor: GoColors.forest,
-          labelStyle: TextStyle(color: selected ? Colors.white : GoColors.ink, fontSize: 12),
+          labelStyle: TextStyle(
+            color: selected ? Colors.white : GoColors.ink,
+            fontSize: 12,
+          ),
           onSelected: (_) {
             app.geneticsTab = label;
             app.notifyListeners();
@@ -129,6 +137,7 @@ class _AreasScreenState extends State<AreasScreen> {
                 children: ['Indoor', 'Outdoor', 'Tunnel', 'Greenhouse']
                     .map((k) => ChoiceChip(
                           label: Text(k),
+                          checkmarkColor: k == kind ? Colors.white : GoColors.ink,
                           selected: kind == k,
                           selectedColor: GoColors.forest,
                           labelStyle: TextStyle(color: kind == k ? Colors.white : GoColors.ink),
